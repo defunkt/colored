@@ -1,4 +1,4 @@
-require 'Win32/Console/ANSI' if PLATFORM =~ /win32/
+require 'Win32/Console/ANSI' if RUBY_PLATFORM =~ /win32/
 
 ##
 # cute.
