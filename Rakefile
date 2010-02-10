@@ -8,3 +8,9 @@ Rake::TestTask.new do |t|
   t.verbose = false
 end
 
+begin
+  require 'mg'
+  MG.new("colored.gemspec")
+rescue LoadError
+  abort "Please `gem install mg`"
+end
