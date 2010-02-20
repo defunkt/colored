@@ -15,9 +15,7 @@ cute.
 Windows users:
   You will need the Win32 Console Ansi gem.  Get it:
 
-  $ sudo gem install win32console-1.0.0 --source require.errtheblog.com
-
-  (We're trying to make it official.  Hang in there.)
+  $ gem install win32console
 
 >> chris[at]ozmm[dot]org
 => http://github.com/defunkt
