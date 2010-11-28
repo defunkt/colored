@@ -49,4 +49,17 @@ class TestColor < Test::Unit::TestCase
     assert_equal  "<light_blue>text</light_blue>".colorize, 
                   "text".light_blue
   end
+  
+  def test_tty_detection
+    Colored.enable!
+    assert_equal Colored.is_tty?, true
+    assert_equal "\e[31mred\e[0m", "red".red
+
+    Colored.disable!
+    assert_equal Colored.is_tty?, false
+    assert_equal "red", "red".red
+
+    Colored.force!
+    assert_equal "\e[31mred\e[0m", "red".red
+  end
 end

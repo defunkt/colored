@@ -18,7 +18,7 @@ module Colored
 
   ###########################################################################
   
-  IS_TTY = STDOUT.isatty
+  @@is_tty = STDOUT.isatty
 
   COLORS = { 
     'black'   => 30,
@@ -112,7 +112,7 @@ module Colored
       return tagged_colors(self)
     end
     
-    if IS_TTY
+    if @@is_tty
       colored = [color(options[:foreground]), color("on_#{options[:background]}"), extra(options[:extra])].compact * ''
       colored << string
       colored << extra(:clear)
@@ -138,6 +138,20 @@ module Colored
   end
 
   ###########################################################################
+
+  def enable!
+    @@is_tty = true
+  end
+  
+  alias_method :force!, :enable!
+  
+  def disable!
+    @@is_tty = false
+  end
+
+  def is_tty?
+    @@is_tty
+  end
   
   #
   # Is this string legal?
