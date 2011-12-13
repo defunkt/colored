@@ -15,6 +15,8 @@ require 'Win32/Console/ANSI' if RUBY_PLATFORM =~ /win32/
 module Colored
   extend self
 
+  @@color_enabled = true
+
   COLORS = { 
     'black'   => 30,
     'red'     => 31, 
@@ -66,6 +68,7 @@ module Colored
   end
 
   def colorize(string, options = {})
+    return string unless @@color_enabled
     colored = [color(options[:foreground]), color("on_#{options[:background]}"), extra(options[:extra])].compact * ''
     colored << string
     colored << extra(:clear)
@@ -86,6 +89,15 @@ module Colored
     return unless color_name && COLORS[color_name]
     "\e[#{COLORS[color_name] + (background ? 10 : 0)}m" 
   end
+
+  def disable_color
+    @@color_enabled = false
+  end
+
+  def enable_color
+    @@color_enabled = true
+  end
+
 end unless Object.const_defined? :Colored
 
 String.send(:include, Colored)
