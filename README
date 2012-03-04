@@ -11,6 +11,8 @@ cute.
   >> logger.debug "hey this is broken!".red_on_yellow     # in rails
 
   >> puts Color.red "This is red" # but this part is mostly untested
+  
+  >> puts "The More You Know!".bold.rainbow
 
 Windows users:
   You will need the Win32 Console Ansi gem.  Get it:
