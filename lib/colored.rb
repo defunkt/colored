@@ -12,6 +12,10 @@ require 'Win32/Console/ANSI' if RUBY_PLATFORM =~ /win32/
 #   >> "this is really bold and really blue".bold.blue
 #
 #   >> Colored.red "This is red" # but this part is mostly untested
+#
+#   >> "The More You Know!".bold.rainbow
+##
+
 module Colored
   extend self
 
@@ -49,6 +53,21 @@ module Colored
       end
     end
   end
+  
+  define_method('rainbow') do
+    chars = self.split(/(\[[0-9]*m)|/) #find escape chars (so we don't colorize them)
+    color_keys = colors.reject{ |k| (k == 'black' or k == 'white')}
+    ans = ""
+    chars.each_with_index do | character, index | 
+      currentcolor = color_keys[index % color_keys.length]
+      if character.length == 1
+        ans << colorize(character, { :foreground => currentcolor, :noclear => true })
+      else
+        ans << character
+      end
+    end
+    ans << extra(:clear)
+  end
 
   EXTRAS.each do |extra, value|
     next if extra == 'clear'
@@ -68,7 +87,8 @@ module Colored
   def colorize(string, options = {})
     colored = [color(options[:foreground]), color("on_#{options[:background]}"), extra(options[:extra])].compact * ''
     colored << string
-    colored << extra(:clear)
+    colored << extra(:clear) unless options[:noclear]
+    colored
   end
 
   def colors
