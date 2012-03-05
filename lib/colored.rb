@@ -55,7 +55,7 @@ module Colored
   end
   
   define_method('rainbow') do
-    chars = self.split(/(\[[0-9]*m)|/) #find escape chars (so we don't colorize them)
+    chars = self.split(/(\e\[[0-9]*m)|/) #find escape chars (so we don't colorize them)
     color_keys = colors.reject{ |k| (k == 'black' or k == 'white')}
     ans = ""
     chars.each_with_index do | character, index | 
