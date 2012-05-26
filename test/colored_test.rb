@@ -41,4 +41,25 @@ class TestColor < Test::Unit::TestCase
   def test_eol_with_modifiers_stack_with_colors
     assert_equal "\e[36m\e[4m\e[1m\e[2Kcyan underlined bold\e[0m\e[0m\e[0m", "cyan underlined bold".bold.underline.cyan.to_eol
   end
+  
+  def test_tagged_colors
+    assert_equal  "<blue>text</blue>".colorize, 
+                  "text".blue
+
+    assert_equal  "<light_blue>text</light_blue>".colorize, 
+                  "text".light_blue
+  end
+  
+  def test_tty_detection
+    Colored.enable!
+    assert_equal Colored.is_tty?, true
+    assert_equal "\e[31mred\e[0m", "red".red
+
+    Colored.disable!
+    assert_equal Colored.is_tty?, false
+    assert_equal "red", "red".red
+
+    Colored.force!
+    assert_equal "\e[31mred\e[0m", "red".red
+  end
 end
