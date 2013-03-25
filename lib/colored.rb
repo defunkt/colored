@@ -77,7 +77,7 @@ module Colored
 
   def extra(extra_name)
     extra_name = extra_name.to_s
-    "\e[#{EXTRAS[extra_name]}m" if EXTRAS[extra_name] && $stdout.tty?
+    return "\e[#{EXTRAS[extra_name]}m" if EXTRAS[extra_name] && $stdout.tty?
     ""
   end
 
