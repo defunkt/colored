@@ -1,4 +1,17 @@
-# from https://github.com/defunkt/colored
+require 'Win32/Console/ANSI' if RUBY_PLATFORM =~ /win32/
+
+##
+# cute.
+#
+#   >> "this is red".red
+#
+#   >> "this is red with a blue background (read: ugly)".red_on_blue
+#
+#   >> "this is red with an underline".red.underline
+#
+#   >> "this is really bold and really blue".bold.blue
+#
+#   >> Colored.red "This is red" # but this part is mostly untested
 module Colored
   extend self
 
