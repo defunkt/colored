@@ -2,9 +2,9 @@ require 'Win32/Console/ANSI' if RUBY_PLATFORM =~ /win32/
 
 ##
 # cute.
-# 
+#
 #   >> "this is red".red
-#  
+#
 #   >> "this is red with a blue background (read: ugly)".red_on_blue
 #
 #   >> "this is red with an underline".red.underline
@@ -77,13 +77,14 @@ module Colored
 
   def extra(extra_name)
     extra_name = extra_name.to_s
-    "\e[#{EXTRAS[extra_name]}m" if EXTRAS[extra_name]
+    return "\e[#{EXTRAS[extra_name]}m" if EXTRAS[extra_name] && $stdout.tty?
+    ""
   end
 
   def color(color_name)
     background = color_name.to_s =~ /on_/
     color_name = color_name.to_s.sub('on_', '')
-    return unless color_name && COLORS[color_name]
+    return unless color_name && COLORS[color_name] && $stdout.tty?
     "\e[#{COLORS[color_name] + (background ? 10 : 0)}m" 
   end
 end unless Object.const_defined? :Colored
