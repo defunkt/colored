@@ -42,7 +42,7 @@ module Colored
       colorize(self, :background => color)
     end
 
-    COLORS.each do |highlight, value|
+    COLORS.each_key do |highlight|
       next if color == highlight
       define_method("#{color}_on_#{highlight}") do
         colorize(self, :foreground => color, :background => highlight)
