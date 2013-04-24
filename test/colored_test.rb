@@ -15,7 +15,7 @@ class TestColor < Test::Unit::TestCase
   end
 
   def test_hot_color_on_color_action
-    assert_equal "\e[31m\e[44mred on blue\e[0m", "red on blue".red_on_blue 
+    assert_equal "\e[31m\e[44mred on blue\e[0m", "red on blue".red_on_blue
   end
 
   def test_modifier
