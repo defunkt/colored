@@ -29,6 +29,8 @@ module Colored
   EXTRAS = {
     'clear'     => 0, 
     'bold'      => 1,
+    'dark'      => 2,
+    'italic'    => 3,
     'underline' => 4,
     'reversed'  => 7
   }
