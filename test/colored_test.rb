@@ -1,5 +1,5 @@
 require 'test/unit'
-require_relative '../lib/colored'
+require File.dirname(__FILE__) + '/../lib/colored'
 
 class TestColor < Test::Unit::TestCase
   def test_one_color
