@@ -29,6 +29,8 @@ module Colored
   EXTRAS = {
     'clear'     => 0, 
     'bold'      => 1,
+    'dark'      => 2,
+    'italic'    => 3,
     'underline' => 4,
     'reversed'  => 7
   }
@@ -67,7 +69,7 @@ module Colored
 
   def colorize(string, options = {})
     colored = [color(options[:foreground]), color("on_#{options[:background]}"), extra(options[:extra])].compact * ''
-    colored << string
+    colored << String(string)
     colored << extra(:clear)
   end
 
@@ -89,3 +91,6 @@ module Colored
 end unless Object.const_defined? :Colored
 
 String.send(:include, Colored)
+Fixnum.send(:include, Colored)
+Float.send(:include, Colored)
+
