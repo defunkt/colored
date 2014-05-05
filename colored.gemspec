@@ -11,6 +11,7 @@ Gem::Specification.new do |s|
   s.files             = %w( README Rakefile LICENSE )
   s.files            += Dir.glob("lib/**/*")
   s.files            += Dir.glob("test/**/*")
+  s.licenses          = ["MIT"]
   s.description       = <<-desc
   >> puts "this is red".red
  
