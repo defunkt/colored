@@ -32,6 +32,8 @@ module Colored
     'underline' => 4,
     'reversed'  => 7
   }
+
+  @@enforced_colors = nil
   
   COLORS.each do |color, value|
     define_method(color) do 
@@ -90,7 +92,12 @@ module Colored
   end
 
   def is_tty()
-    $stdout.tty?
+    return $stdout.tty? unless not @@enforced_colors.nil?
+    @@enforced_colors
+  end
+
+  def enforce_colors(x)
+    @@enforced_colors = x
   end
 end unless Object.const_defined? :Colored
 
