@@ -32,6 +32,8 @@ module Colored
     'underline' => 4,
     'reversed'  => 7
   }
+
+  @@enforced_colors = nil
   
   COLORS.each do |color, value|
     define_method(color) do 
@@ -76,15 +78,26 @@ module Colored
   end
 
   def extra(extra_name)
+    return "" unless is_tty
     extra_name = extra_name.to_s
     "\e[#{EXTRAS[extra_name]}m" if EXTRAS[extra_name]
   end
 
   def color(color_name)
+    return unless is_tty
     background = color_name.to_s =~ /on_/
     color_name = color_name.to_s.sub('on_', '')
     return unless color_name && COLORS[color_name]
-    "\e[#{COLORS[color_name] + (background ? 10 : 0)}m" 
+    "\e[#{COLORS[color_name] + (background ? 10 : 0)}m"
+  end
+
+  def is_tty()
+    return $stdout.tty? unless not @@enforced_colors.nil?
+    @@enforced_colors
+  end
+
+  def enforce_colors(x)
+    @@enforced_colors = x
   end
 end unless Object.const_defined? :Colored
 

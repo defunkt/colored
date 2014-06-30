@@ -1,6 +1,8 @@
 require 'test/unit'
 require File.dirname(__FILE__) + '/../lib/colored'
 
+Colored.enforce_colors(true)
+
 class TestColor < Test::Unit::TestCase
   def test_one_color
     assert_equal "\e[31mred\e[0m", "red".red
@@ -40,5 +42,11 @@ class TestColor < Test::Unit::TestCase
 
   def test_eol_with_modifiers_stack_with_colors
     assert_equal "\e[36m\e[4m\e[1m\e[2Kcyan underlined bold\e[0m\e[0m\e[0m", "cyan underlined bold".bold.underline.cyan.to_eol
+  end
+
+  def test_colors_on_tty_only
+    Colored.enforce_colors(false)
+    assert_equal "red", "red".red
+    Colored.enforce_colors(true)
   end
 end
