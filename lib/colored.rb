@@ -71,6 +71,11 @@ module Colored
     colored << extra(:clear)
   end
 
+  def uncolorize
+    # http://refiddle.com/18rj
+    gsub /\e\[\d+(;\d+)*m/, ''
+  end
+
   def colors
     @@colors ||= COLORS.keys.sort
   end
