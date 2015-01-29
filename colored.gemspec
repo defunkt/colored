@@ -6,6 +6,7 @@ Gem::Specification.new do |s|
   s.homepage          = "http://github.com/defunkt/colored"
   s.email             = "chris@ozmm.org"
   s.authors           = ["Chris Wanstrath"]
+  s.license           = 'MIT'
   s.has_rdoc          = false
   s.require_path      = "lib"
   s.files             = %w( README Rakefile LICENSE )
