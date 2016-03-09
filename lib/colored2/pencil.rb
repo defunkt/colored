@@ -40,7 +40,7 @@ module Colored2
       end
 
       def effect(effect_name)
-        effect_name = effect_name&.to_sym
+        effect_name = effect_name.to_sym if effect_name
         "\e[#{EFFECTS[effect_name]}m" if EFFECTS[effect_name]
       end
 
