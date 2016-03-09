@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency 'rake', '~> 10.0'
   s.add_development_dependency 'rspec', '~> 3.4'
+  s.add_development_dependency 'codeclimate-test-reporter'
 
   s.description       = <<-desc
 This is a heavily modified fork of http://github.com/defunkt/colored gem, with many

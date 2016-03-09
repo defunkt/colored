@@ -1,3 +1,7 @@
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
+
+
 require 'rspec/core'
 require_relative '../lib/colored2'
 
