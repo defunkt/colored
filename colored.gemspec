@@ -31,17 +31,19 @@ this might, perhaps, be considered a good alternative.
 
 Simple gem that adds various color methods to String class, and can be used as follows:
 
-  require 'colored'
+  require 'colored2'
 
-  'this is red'.red
-  'this is red with a blue background (read: ugly)'.red_on_blue
-  'this is red with an underlined'.red.underlined
-  'this is really bold and really blue'.bold.blue
-  Color.red 'This is red'
-
-  red do
-      First few words are red, '
-     green { 'and then green '}
+  puts 'this is red'.red
+  puts 'this is red with a yellow background'.red.on.yellow
+  puts 'this is red with and italic'.red.italic
+  puts 'this is green bold'.green.bold << ' and regular'.green
+  puts 'this is really bold blue on white but reversed'.bold.blue.on.white.reversed
+  puts 'this is regular, but '.red! << 'this is red '.yellow! << ' and yellow.'.clear!
+  puts ('this is regular, but '.red! do
+    'this is red '.yellow! do
+      ' and yellow.'.clear!
+    end
+  end)
 
   desc
 end

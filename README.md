@@ -1,3 +1,9 @@
+[![Gem Version](https://badge.fury.io/rb/colored2.svg)](https://badge.fury.io/rb/colored2)
+[![Build Status](https://travis-ci.org/kigster/colored2.svg?branch=master)](https://travis-ci.org/kigster/colored2)
+[![Code Climate](https://codeclimate.com/github/kigster/colored2/badges/gpa.svg)](https://codeclimate.com/github/kigster/colored2)
+[![Test Coverage](https://codeclimate.com/github/kigster/colored2/badges/coverage.svg)](https://codeclimate.com/github/kigster/colored2/coverage)
+[![Issue Count](https://codeclimate.com/github/kigster/colored2/badges/issue_count.svg)](https://codeclimate.com/github/kigster/colored2)
+
 ## Colored2
 
 This is a fork of Chris (defunkt) Wanstrath's colored gem, which appears to be no longer supported.
