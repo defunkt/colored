@@ -1,8 +1,8 @@
 [![Gem Version](https://badge.fury.io/rb/colored2.svg)](https://badge.fury.io/rb/colored2)
 [![Build Status](https://travis-ci.org/kigster/colored2.svg?branch=master)](https://travis-ci.org/kigster/colored2)
-[![Code Climate](https://codeclimate.com/github/kigster/colored2/badges/gpa.svg)](https://codeclimate.com/github/kigster/colored2)
-[![Test Coverage](https://codeclimate.com/github/kigster/colored2/badges/coverage.svg)](https://codeclimate.com/github/kigster/colored2/coverage)
-[![Issue Count](https://codeclimate.com/github/kigster/colored2/badges/issue_count.svg)](https://codeclimate.com/github/kigster/colored2)
+[![Code Climate](https://codeclimate.com/repos/56dff58d80b254164b003d80/badges/176e4c39b20bfed90478/gpa.svg)](https://codeclimate.com/repos/56dff58d80b254164b003d80/feed)
+[![Test Coverage](https://codeclimate.com/repos/56dff58d80b254164b003d80/badges/176e4c39b20bfed90478/coverage.svg)](https://codeclimate.com/repos/56dff58d80b254164b003d80/coverage)
+[![Issue Count](https://codeclimate.com/repos/56dff58d80b254164b003d80/badges/176e4c39b20bfed90478/issue_count.svg)](https://codeclimate.com/repos/56dff58d80b254164b003d80/feed)
 
 ## Colored2
 
