@@ -14,6 +14,8 @@ This fork comes with a slightly spruced up syntax and rspecs.
 ## Usage
 
 ```ruby
+require 'colored2'
+
 puts 'this is red'.red
 puts 'this is red with a yellow background'.red.on.yellow
 puts 'this is red with and italic'.red.italic
