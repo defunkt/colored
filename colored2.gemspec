@@ -13,9 +13,8 @@ Gem::Specification.new do |s|
   s.authors           = ['Konstantin Gredeskoul']
   s.has_rdoc          = false
   s.require_path      = 'lib'
-  s.files             = %w(README Rakefile LICENSE )
+  s.files             = %w(README.md Rakefile LICENSE )
   s.files            += Dir.glob('lib/**/*')
-  s.files            += Dir.glob('spec/**/*')
   s.test_files        = Dir.glob('spec/**/*')
 
   s.required_ruby_version     = '>= 2.0.0'
