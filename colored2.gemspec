@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.version           = Colored2::VERSION
   s.license           = 'MIT'
   s.summary           = 'Add even more color to your life.'
-  s.homepage          = 'http://github.com/kigster/colored'
+  s.homepage          = 'http://github.com/kigster/colored2'
   s.email             = 'kigster@gmail.com'
   s.authors           = ['Chris Wanstrath', 'Konstantin Gredeskoul']
   s.has_rdoc          = false
