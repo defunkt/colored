@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
   s.license           = 'MIT'
   s.summary           = 'Add even more color to your life.'
   s.homepage          = 'http://github.com/kigster/colored'
-  s.email             = 'kig@reinvent.one'
-  s.authors           = ['Konstantin Gredeskoul']
+  s.email             = 'kigster@gmail.com'
+  s.authors           = ['Chris Wanstrath', 'Konstantin Gredeskoul']
   s.has_rdoc          = false
   s.require_path      = 'lib'
   s.files             = %w(README.md Rakefile LICENSE )
