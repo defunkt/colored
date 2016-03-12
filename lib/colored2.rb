@@ -1,4 +1,4 @@
-require 'colored2/constants'
+require 'colored2/codes'
 require 'colored2/ascii_decorator'
 
 module Colored2
@@ -9,23 +9,27 @@ module Colored2
   def self.included(from_class)
     from_class.class_eval do
 
-      def surround_with_color(color_or_effect, color_self, string = nil, &block)
-        color_type = if Colored2.background_next?
+      def surround_with_color(color: nil, effect: nil, color_self:, string: nil, &block)
+        color_type = if Colored2.background_next? && effect.nil?
                        Colored2.foreground_next!
                        :background
                      else
                        :foreground
                      end
 
+       opts = {}
+       opts.merge!(color_type => color) if color
+       opts.merge!(effect: effect) if effect
+
         if color_self then
-          opts = { beginning: :on, end: :off, color_type => color_or_effect, effect: color_or_effect }
+          opts.merge!( beginning: :on, end: :off)
           colored = Colored2::AsciiDecorator.new(self).decorate(opts)
           if string || block
             arg = "#{string}#{block.call if block}"
             colored << Colored2::AsciiDecorator.new(arg).decorate(opts) if arg.length > 0
           end
         else
-          opts = { end: :on, color_type => color_or_effect, effect: color_or_effect}
+          opts.merge!( end: :on )
           colored = Colored2::AsciiDecorator.new(self).decorate(opts)
           if string || block
             arg = "#{string}#{block.call if block}"
@@ -44,22 +48,22 @@ module Colored2
     from_class.instance_eval do
       COLORS.keys.each do |color|
         define_method(color) do |string = nil, &block|
-          surround_with_color(color, true, string, &block)
+          surround_with_color(color: color, color_self: true, string: string, &block)
         end
 
         define_method("#{color}!".to_sym) do |string = nil, &block|
-          surround_with_color(color, false, string, &block)
+          surround_with_color(color: color, color_self: false, string: string, &block)
         end
       end
 
       EFFECTS.keys.each do |effect|
         next if effect == 'clear'
         define_method(effect) do |string = nil, &block|
-          surround_with_color(effect, true, string, &block)
+          surround_with_color(effect: effect, color_self: true, string: string, &block)
         end
 
         define_method("#{effect}!".to_sym) do |string = nil, &block|
-          surround_with_color(effect, false, string, &block)
+          surround_with_color(effect: effect, color_self: false, string: string, &block)
         end
       end
 

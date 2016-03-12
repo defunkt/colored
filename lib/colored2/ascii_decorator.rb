@@ -1,4 +1,4 @@
-require_relative 'constants'
+require_relative 'codes'
 require 'forwardable'
 
 module Colored2
@@ -41,29 +41,10 @@ module Colored2
       def background_next?
         self.__background_next
       end
-
-      def clear
-        effect(:clear)
-      end
-
-      def colors
-        @colors ||= COLORS.keys.sort
-      end
-
-      def effect(effect_name)
-        "\e[#{EFFECTS[effect_name]}m" if effect_name && EFFECTS[effect_name.to_sym]
-      end
-
-      def color(color_name:, type:)
-        background_code = (type == :background) ? 10 : 0
-        if color_name && COLORS[color_name.to_sym]
-          "\e[#{COLORS[color_name.to_sym] + background_code}m"
-        end
-      end
     end
 
     extend Forwardable
-    def_delegators :@my_class, :enable!, :disable!, :clear, :colors, :effect, :color
+    def_delegators :@my_class, :enable!, :disable!
 
     attr_accessor :string, :my_class
 
@@ -75,12 +56,11 @@ module Colored2
     # options[:start] = :color
     # options[:end]   = :color | :clear
     def decorate(options = {})
-
       return string if !self.class.enabled? || string.length == 0
       escape_sequence = [
-        color(color_name: options[:foreground], type: :foreground),
-        color(color_name: options[:background], type: :background),
-        effect(options[:effect])
+        Colored2::TextColor.new(options[:foreground]),
+        Colored2::BackgroundColor.new(options[:background]),
+        Colored2::Effect.new(options[:effect])
       ].compact.join
 
       colored = ''
@@ -97,5 +77,10 @@ module Colored2
       string.gsub(%r{\e\[\d+(;\d+)*m}, '')
     end
 
+    private
+
+    def clear
+      @clear ||= Colored2::Effect.new(:clear).to_s
+    end
   end
 end
