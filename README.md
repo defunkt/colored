@@ -63,7 +63,7 @@ There are several additional helpers tucked onto the `String` class.
 Add this line to your application's Gemfile:
 
 ```ruby
-    gem 'active_feed'
+    gem 'colored2'
 ```
 
 And then execute:
@@ -72,7 +72,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install active_feed
+    $ gem install colored2
 
 
 ## Development
