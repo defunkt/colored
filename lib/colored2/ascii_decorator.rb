@@ -54,7 +54,7 @@ module Colored2
     end
 
     # options[:start] = :color
-    # options[:end]   = :color | :clear
+    # options[:end]   = :color | :no_color
     def decorate(options = {})
       return string if !self.class.enabled? || string.length == 0
       escape_sequence = [
@@ -67,7 +67,7 @@ module Colored2
       colored << escape_sequence if options[:beginning] == :on
       colored << string
       if options[:end]
-        colored << clear if options[:end] == :off && !colored.end_with?(clear)
+        colored << no_color if options[:end] == :off && !colored.end_with?(no_color)
         colored << escape_sequence if options[:end] == :on
       end
       colored
@@ -79,8 +79,8 @@ module Colored2
 
     private
 
-    def clear
-      @clear ||= Colored2::Effect.new(:clear).to_s
+    def no_color
+      @no_color ||= Colored2::Effect.new(:no_color).to_s
     end
   end
 end

@@ -57,7 +57,7 @@ module Colored2
       end
 
       EFFECTS.keys.each do |effect|
-        next if effect == 'clear'
+        next if effect == 'no_color'
         define_method(effect) do |string = nil, &block|
           surround_with_color(effect: effect, color_self: true, string: string, &block)
         end
@@ -73,6 +73,10 @@ module Colored2
           return "\e[2K" << self
         end
         tmp
+      end
+
+      define_method(:to_bol) do
+        "#{self}\033[#{length}D\033[0D"
       end
     end
   end

@@ -38,10 +38,10 @@ Simple gem that adds various color methods to String class, and can be used as f
   puts 'this is red with and italic'.red.italic
   puts 'this is green bold'.green.bold << ' and regular'.green
   puts 'this is really bold blue on white but reversed'.bold.blue.on.white.reversed
-  puts 'this is regular, but '.red! << 'this is red '.yellow! << ' and yellow.'.clear!
+  puts 'this is regular, but '.red! << 'this is red '.yellow! << ' and yellow.'.no_color!
   puts ('this is regular, but '.red! do
     'this is red '.yellow! do
-      ' and yellow.'.clear!
+      ' and yellow.'.no_color!
     end
   end)
 

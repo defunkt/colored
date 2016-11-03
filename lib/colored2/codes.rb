@@ -12,7 +12,7 @@ module Colored2
   }
 
   EFFECTS = {
-    clear:      0,
+    no_color:   0,
     bold:       1,
     dark:       2,
     italic:     3,
@@ -31,7 +31,7 @@ module Colored2
       raise ArgumentError.new("No color or effect named #{name} exists for #{self.class}.") if @escape.nil?
     end
 
-    def value shift = nil
+    def value(shift = nil)
       escape_code = escape
       escape_code += shift if shift && escape_code
       name && escape ? "\e[#{escape_code}m" : ''

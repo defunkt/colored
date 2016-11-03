@@ -44,20 +44,20 @@ RSpec.describe String do
     end
 
     it 'should defined block syntax nested colors two levels deep' do
-      expect('regular here'.blue! + 'blue here'.clear!).to eql('regular here' << 'blue here'.blue)
+      expect('regular here'.blue! + 'blue here'.no_color!).to eql('regular here' << 'blue here'.blue)
     end
 
     it 'should defined block syntax nested colors two levels deep' do
-      expect('regular here'.blue! { 'something else'.red!('red riding hood') }).to eql('regular here'.blue! << 'something else'.red! << 'red riding hood'.clear!)
+      expect('regular here'.blue! { 'something else'.red!('red riding hood') }).to eql('regular here'.blue! << 'something else'.red! << 'red riding hood'.no_color!)
     end
 
     it 'should defined block syntax nested colors two levels deep' do
       expectation = 'this is regular, but '.red! do
         'this is red '.yellow! do
-          ' and yellow'.clear!
+          ' and yellow'.no_color!
         end
       end
-      expect(expectation).to eql('this is regular, but '.red! << 'this is red '.yellow! << ' and yellow'.clear!)
+      expect(expectation).to eql('this is regular, but '.red! << 'this is red '.yellow! << ' and yellow'.no_color!)
     end
   end
 
