@@ -1,4 +1,4 @@
-require_relative 'codes'
+require 'colored2/codes'
 require 'forwardable'
 
 module Colored2

@@ -6,16 +6,15 @@
 
 ## Colored2
 
-This is a fork of Chris (defunkt) Wanstrath's colored gem, which appears to be no longer supported.
+This is an actively maintained fork of Chris (defunkt) Wanstrath's gem [colored](https://github.com/defunkt/colored), which appears to be no longer supported.
 
-This fork comes with a slightly spruced up syntax and RSPec.
+This fork comes with a slightly spruced up syntax, some additional features, and a test suite written in [RSpec](http://rspec.info/).
 
 ## Usage
 
-In addition to the simple syntax of the original gem, which affected only the string to the left of the method call, 
-the "bang" syntax affects a string to the right. If the block or a method argument is provided,
-the contents is wrapped in the color, and the color is then reset back. If no block
-or argument is provided, the color is left open-ended, and must be explicitly reset – when using the 'bang' notation.
+In addition to the simple syntax of the original gem, which affected only the string to the left of the method call, the new "bang" syntax affects a string to the right. If the block or a method argument is provided, the contents is wrapped in the color, and the color is then reset back. 
+
+If no block or argument is provided, the color is left open-ended, and must be explicitly reset – when using the 'bang' notation.
 
 ![](doc/colored2-session1.png)
 
@@ -32,6 +31,9 @@ or argument is provided, the color is left open-ended, and must be explicitly re
 
 ### Complete Set of Effects
 
+> Note: previous versions used method name `clear` instead of `no_color`, which clashed with many 3rd party frameworks that defined similarly named method in the global namespace.
+> This highlights the dangers of introducing so many words into the `String` namespace.
+
  * no_color
  * bold
  * dark
@@ -43,9 +45,9 @@ or argument is provided, the color is left open-ended, and must be explicitly re
  
 ## Usage in Other Classes
 
-You can decorate and color not just strings. 
+With this gem you can add color to not just strings, but to any other class. `String` class is automatically decorated as soon as `require 'colored2'` is parsed by the ruby interpreter. Note that future versions may refrain from auto-requiring `colored2/strings`, and rely on explicitly requiring components they need colorized, eg `require 'colored2/numbers'`.
 
-To color numbers, require the following file, which automatically decorates `Fixnum` and `Float`.  You can also add color methods to the `Object`. Finally, you can add the methods to any custom class by including the `Colored2` Module.
+To color numbers, require the following file, which automatically decorates `Integer` and `Float`.  You can also add color methods to the `Object`. Finally, you can add the methods to any custom class by including the `Colored2` Module.
 
 Below is an `IRB` — session that shows a slightly more advanced usage.
 
@@ -62,9 +64,9 @@ There are several additional helpers tucked onto the `String` class.
 
 Add this line to your application's Gemfile:
 
-```ruby
+
     gem 'colored2'
-```
+
 
 And then execute:
 

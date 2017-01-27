@@ -1,5 +1,5 @@
-require_relative 'spec_helper'
-require_relative '../lib/colored2/object'
+require File.expand_path('spec/spec_helper')
+require 'colored2/object'
 
 subject1 = red('hello')
 subject2 = red('blue').on.blue

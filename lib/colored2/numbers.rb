@@ -1,3 +1,10 @@
 require 'colored2'
-Colored2.decorate(Fixnum)
+module Colored2
+  def self.integer_class
+    major, minor = RUBY_VERSION.split(/\./).map(&:to_i)
+    major >= 2 && minor >= 4 ? Integer : Kernel.const_get(:Fixnum)
+  end
+end
+
+Colored2.decorate(Colored2.integer_class)
 Colored2.decorate(Float)
