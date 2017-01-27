@@ -9,7 +9,7 @@ module Colored2
   def self.included(from_class)
     from_class.class_eval do
 
-      def surround_with_color(color: nil, effect: nil, color_self:, string: nil, &block)
+      def surround_with_color(color: nil, effect: nil, color_self: nil, string: nil, &block)
         color_type = if Colored2.background_next? && effect.nil?
                        Colored2.foreground_next!
                        :background
