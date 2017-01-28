@@ -1,4 +1,5 @@
-require 'colored2'
+require 'colored2' unless defined?(Colored2) && Colored2.respond_to?(:decorate)
+
 module Colored2
   def self.integer_class
     major, minor = RUBY_VERSION.split(/\./).map(&:to_i)
