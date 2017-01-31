@@ -1,14 +1,21 @@
+addons:
+  code_climate:
+    repo_token:
+      secure: Z5bT66QI5KlOn8X2yM25xvSHKQI3LPwdfUWrF33WnY3CUwQbAt/CroNGSuSpFDZuSAMDgM4wbcv6C1S/qT4sup9o7ThhP0u8DDD6QjlX4X8vdTc5SyEVjYzRE+somTK04+2GIQK7LsViTFavhBKWf/1p5gKSnBaePFELEi1IwVOWO4tUzMtSu7BpVBWtO6YGik4WPGjLywwl2tpdezgB/3Jk2SmhEo2p6o6umvyCIzfGDbMUvSMbbQbAyPs4InTs6TpMEyqtdTAv4N3eBSDRPuy62nwp/mZE9d5rHOK83ZQjXLrWibCZukWRE0/FmUWR+7w5uC2Pc8ZNfGH6m3MEZJcu5z4mX65YnaeerEh3abctISP9OWV2puTDQpqkYh3EJ/88FXdyym5qriM7Ynhh8Ew8DbEy4t5WjVxXqnAu9r6BQ8KgG3D5NQqn8wLhXSWiIKrEaWhLYXc37foRZUqmi0Ys0/1uskRHEfsMPsNdhScs5doBR6oQzBq93N4h5v+4tTC7oSEV7CVX2RnmmjwYBcxqU9qgWyV9w2Ysv7yaByGehbQXjqoTtDUjgDV69/AotbQ/LLHCAxkGfQPXcAzH7zVY1GNdeEOqo+5vxGCb+8HH539pBlfVOF8cR5gfRNvulvWqgmaKl+0ogV7KI7DLlm8gDZ6+LPEhQ/feDC6na3k=
 language: ruby
-env:
-  - CODECLIMATE_REPO_TOKEN=071b24f5a54c4f4d6b54e2dedd2b162e2a6a1df2ffa1b398baec43546e5735c3
 rvm:
-  - 2.0.0-p481
-  - 2.2.3
-  - 2.3.0
-script: "bundle exec rspec"
+- 2.0.0-p481
+- 2.2.3
+- 2.3.0
+script: bundle exec rspec
 notifications:
   email:
     recipients:
-      - kigster@gmail.com
-    on_success: never
+    - kigster@gmail.com
+    on_success: change
     on_failure: always
+  slack:
+    rooms:
+      secure: GcACCHmcmo99lYE5dgt2TmY4YIPMWr75q0Bkm4Lddegq/1eMXgcZDz00j8iHWtnveyJSjEUpZFQ9uyx+P7dvxT7D5gl43arKZEylS4vMRg9QRgZu7/ROrXbJtrUyKulFRUTdFrmOiK9nDKpAzlvLvMKC4kaQnn88Xtu9pYMU8y4n5fCtl29gZM9ZjVbrBBvV/SumnTDLla2oQ7oFgUZdZhQZ1qsevYknxNq4eIcvPDjbon+bovfsIISEVRSNo2C3yjO+mqWKed3jfuCA4taAZ8/aVVFEKURMH10HFms1CiC3lE/gF4YfBXsqKpjnB+bKjBcWox2FQrp96FulMEIfkKQrnuncO96o7MGHX9oNqKSMoycf3+SZFwNa+5Mfq7SBepbHYCoU7/ow31UTyStrc5idG19XzYgI85yjQHdzQN299Xf0O8cGf9q9qAu7rS7JlM3ekR+3rZYO+OxNYTF8rcW1fYIj6GKcbsV8BvuhAVQRFOsk/ibcIb2N7rGVd/ZbU4HAk3RE1ywt+XowinpIHktu2PQUPDNpgRQwM6xqZHO/7s9r7oW0ULmZCMLZ9CMKNjKzrQ9wfh90+v+FiEiUKsaVj4cCwF3PvhVYvxU2AKbCeHtSEb7K6to86+DYNoIKnGH1ryKoyCtyOTZpNMLGFt34Msv7WfEylhG+DpVMvkM=
+after_success:
+- bundle exec codeclimate-test-reporter
