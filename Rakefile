@@ -1,16 +1,13 @@
-require 'rake/testtask'
+require 'bundler'
+require 'bundler/gem_tasks'
+require 'rake/clean'
 
-task :default => :test
-
-Rake::TestTask.new do |t|
-  t.libs << 'lib'
-  t.pattern = 'test/**/*_test.rb'
-  t.verbose = false
-end
+CLEAN.include %w(pkg coverage *.gem)
 
 begin
-  require 'mg'
-  MG.new("colored.gemspec")
+  require 'rspec/core/rake_task'
+  RSpec::Core::RakeTask.new(:spec)
 rescue LoadError
-  abort "Please `gem install mg`"
 end
+
+task :default => [:spec]

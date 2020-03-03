@@ -1,0 +1,22 @@
+{
+  "cmd": "rbenv",
+  "name": "Run All Specs",
+  "args": [ "exec", "bundle", "exec", "rspec", "-c", "-b", "-p 1", "--format progress", "--color", "spec/" ],
+  "keymap": "ctrl-r",
+  "sh": true,
+  "errorMatch": [
+    "rspec (?<file>[\\/0-9a-zA-Z\\._]+):(?<line>\\d+) #",
+    "# (?<file>\\./.*):(?<line>\\d+)",
+    "\\s+from (?<file>\\./.*):(?<line>\\d+)",
+    "`(require|load)': (?<file>\\./.*):(?<line>\\d+)",
+    "^(<file>/.*):(?<line>\\d+)"
+  ],
+  "targets": {
+    "Run Current Spec": {
+      "cmd": "bundle",
+      "args": [ "exec", "rspec", "{FILE_ACTIVE}" ],
+      "sh": false,
+      "keymap": "ctrl-shift-r"
+    }
+  }
+}
