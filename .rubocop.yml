@@ -1,0 +1,21 @@
+inherit_from:
+- https://relaxed.ruby.style/rubocop.yml
+
+inherit_mode:
+  merge:
+    - Exclude
+
+require: 
+  - rubocop-rspec
+  - rubocop-rake
+
+
+AllCops:
+  TargetRubyVersion: "3.1"
+  UseCache: true
+  CacheRootDirectory: ./.rubocop/cache
+  NewCops: enable
+  Exclude:
+    - 'bin/*'
+    - 'vendor/*'
+

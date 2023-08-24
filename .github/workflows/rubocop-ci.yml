@@ -1,0 +1,31 @@
+name: Rubocop
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    name: Rubocop
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@ec02537da5712d66d4d50a0f33b7eb52773b5ed1
+      with:
+        ruby-version: '3.2'
+    - name: Bundle Install
+      run: |
+        bundle check || bundle install -j 20
+  
+    - name: Rubocop
+      run: |
+        bundle exec rubocop
+
+  

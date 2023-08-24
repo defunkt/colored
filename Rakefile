@@ -1,16 +1,17 @@
-require 'rake/testtask'
+# frozen_string_literal: false
 
-task :default => :test
+require 'bundler'
+require 'bundler/gem_tasks'
+require 'rake/clean'
 
-Rake::TestTask.new do |t|
-  t.libs << 'lib'
-  t.pattern = 'test/**/*_test.rb'
-  t.verbose = false
-end
+CLEAN.include %w(pkg coverage *.gem)
 
 begin
-  require 'mg'
-  MG.new("colored.gemspec")
-rescue LoadError
-  abort "Please `gem install mg`"
+  require 'rspec/core/rake_task'
+  RSpec::Core::RakeTask.new(:spec)
+rescue LoadError => e
+  warn "Error loading task: #{e.message}"
+  exit 1
 end
+
+task default: [:spec]
