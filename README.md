@@ -13,7 +13,6 @@ This fork comes with a slightly spruced up syntax, some additional features, and
 <a href="https://liberapay.com/kigster/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg" height="30"></a>
 <a href="https://liberapay.com/kigster/donate"><img alt="Donate using Liberapay" src="https://img.shields.io/liberapay/goal/kigster.svg" height="30"></a>
 
-
 ## Usage
 
 In addition to the simple syntax of the original gem, which affected only the string to the left of the method call, the new "bang" syntax affects a string to the right. If the block or a method argument is provided, the contents is wrapped in the color, and the color is then reset back. 
