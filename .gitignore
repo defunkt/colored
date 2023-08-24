@@ -33,3 +33,6 @@ Gemfile.lock
 .rvmrc
 
 # Created by .ignore support plugin (hsz.mobi)
+
+/.rubocop
+/.rubocop-https---relaxed-ruby-style-rubocop-yml

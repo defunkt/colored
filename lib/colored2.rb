@@ -1,3 +1,5 @@
+# frozen_string_literal: false
+
 require 'colored2/codes'
 require 'colored2/ascii_decorator'
 
@@ -8,7 +10,6 @@ module Colored2
 
   def self.included(from_class)
     from_class.class_eval do
-
       def surround_with_color(color: nil, effect: nil, color_self: nil, string: nil, &block)
         color_type = if Colored2.background_next? && effect.nil?
                        Colored2.foreground_next!
@@ -17,23 +18,23 @@ module Colored2
                        :foreground
                      end
 
-       opts = {}
-       opts.merge!(color_type => color) if color
-       opts.merge!(effect: effect) if effect
+        opts = {}
+        opts.merge!(color_type => color) if color
+        opts.merge!(effect:) if effect
 
-        if color_self then
+        if color_self
           opts.merge!( beginning: :on, end: :off)
           colored = Colored2::AsciiDecorator.new(self).decorate(opts)
           if string || block
-            arg = "#{string}#{block.call if block}"
-            colored << Colored2::AsciiDecorator.new(arg).decorate(opts) if arg.length > 0
+            arg = "#{string}#{block&.call}"
+            colored << Colored2::AsciiDecorator.new(arg).decorate(opts) if !arg.empty?
           end
         else
           opts.merge!( end: :on )
           colored = Colored2::AsciiDecorator.new(self).decorate(opts)
           if string || block
-            arg = "#{string}#{block.call if block}"
-            colored << Colored2::AsciiDecorator.new(arg).decorate(opts.merge(end: :off)) if arg.length > 0
+            arg = "#{string}#{block&.call}"
+            colored << Colored2::AsciiDecorator.new(arg).decorate(opts.merge(end: :off)) if !arg.empty?
           end
         end
         colored
@@ -46,24 +47,25 @@ module Colored2
     end
 
     from_class.instance_eval do
-      COLORS.keys.each do |color|
+      COLORS.each_key do |color|
         define_method(color) do |string = nil, &block|
-          surround_with_color(color: color, color_self: true, string: string, &block)
+          surround_with_color(color:, color_self: true, string:, &block)
         end
 
         define_method("#{color}!".to_sym) do |string = nil, &block|
-          surround_with_color(color: color, color_self: false, string: string, &block)
+          surround_with_color(color:, color_self: false, string:, &block)
         end
       end
 
-      EFFECTS.keys.each do |effect|
+      EFFECTS.each_key do |effect|
         next if effect == 'no_color'
+
         define_method(effect) do |string = nil, &block|
-          surround_with_color(effect: effect, color_self: true, string: string, &block)
+          surround_with_color(effect:, color_self: true, string:, &block)
         end
 
         define_method("#{effect}!".to_sym) do |string = nil, &block|
-          surround_with_color(effect: effect, color_self: false, string: string, &block)
+          surround_with_color(effect:, color_self: false, string:, &block)
         end
       end
 
@@ -72,6 +74,7 @@ module Colored2
         if tmp == self
           return "\e[2K" << self
         end
+
         tmp
       end
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: false
+
 require 'colored2/codes'
 require 'forwardable'
 
@@ -5,15 +7,19 @@ module Colored2
   def self.enable!
     Colored2::AsciiDecorator.enable!
   end
+
   def self.disable!
     Colored2::AsciiDecorator.disable!
   end
+
   def self.background_next!
     Colored2::AsciiDecorator.background_next!
   end
+
   def self.foreground_next!
     Colored2::AsciiDecorator.foreground_next!
   end
+
   def self.background_next?
     Colored2::AsciiDecorator.background_next?
   end
@@ -23,23 +29,29 @@ module Colored2
     @__colors_disabled = false
     class << self
       attr_accessor :__background_next, :__colors_disabled
+
       def enable!
         self.__colors_disabled = false
       end
+
       def enabled?
-        !self.__colors_disabled
+        !__colors_disabled
       end
+
       def disable!
         self.__colors_disabled = true
       end
+
       def background_next!
         self.__background_next = true
       end
+
       def foreground_next!
         self.__background_next = false
       end
+
       def background_next?
-        self.__background_next
+        __background_next
       end
     end
 
@@ -56,7 +68,8 @@ module Colored2
     # options[:start] = :color
     # options[:end]   = :color | :no_color
     def decorate(options = {})
-      return string if !self.class.enabled? || string.length == 0
+      return string if !self.class.enabled? || string.empty?
+
       escape_sequence = [
         Colored2::TextColor.new(options[:foreground]),
         Colored2::BackgroundColor.new(options[:background]),
@@ -74,7 +87,7 @@ module Colored2
     end
 
     def un_decorate
-      string.gsub(%r{\e\[\d+(;\d+)*m}, '')
+      string.gsub(/\e\[\d+(;\d+)*m/, '')
     end
 
     private
