@@ -1,4 +1,7 @@
 
+[![RSpecs](https://github.com/kigster/colored2/actions/workflows/ruby-ci.yml/badge.svg)](https://github.com/kigster/colored2/actions/workflows/ruby-ci.yml)
+[![Rubocop](https://github.com/kigster/colored2/actions/workflows/rubocop-ci.yml/badge.svg)](https://github.com/kigster/colored2/actions/workflows/rubocop-ci.yml)
+
 [![Gem Version](https://badge.fury.io/rb/colored2.svg)](https://badge.fury.io/rb/colored2)
 [![Gitter](https://img.shields.io/gitter/room/gitterHQ/gitter.svg)](https://gitter.im/colored2)
 
