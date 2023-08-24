@@ -1,8 +1,8 @@
+
 [![Gem Version](https://badge.fury.io/rb/colored2.svg)](https://badge.fury.io/rb/colored2)
 [![Downloads](http://ruby-gem-downloads-badge.herokuapp.com/colored2?type=total)](https://rubygems.org/gems/colored2)
 [![Gitter](https://img.shields.io/gitter/room/gitterHQ/gitter.svg)](https://gitter.im/colored2)
 
-[![Build Status](https://travis-ci.org/kigster/colored2.svg?branch=master)](https://travis-ci.org/kigster/colored2)
 [![Test Coverage](https://codeclimate.com/github/kigster/colored2/badges/coverage.svg)](https://codeclimate.com/github/kigster/colored2/coverage)
 [![Code Climate](https://codeclimate.com/github/kigster/colored2/badges/gpa.svg)](https://codeclimate.com/github/kigster/colored2)
 [![Issue Count](https://codeclimate.com/github/kigster/colored2/badges/issue_count.svg)](https://codeclimate.com/github/kigster/colored2)
@@ -12,6 +12,12 @@
 This is an actively maintained fork of Chris (defunkt) Wanstrath's gem [colored](https://github.com/defunkt/colored), which appears to be no longer supported.
 
 This fork comes with a slightly spruced up syntax, some additional features, and a test suite written in [RSpec](http://rspec.info/).
+
+## Please Consider Donating
+
+<a href="https://liberapay.com/kigster/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg" height="30"></a>
+<a href="https://liberapay.com/kigster/donate"><img alt="Donate using Liberapay" src="https://img.shields.io/liberapay/goal/kigster.svg" height="30"></a>
+
 
 ## Usage
 
